@@ -25,7 +25,7 @@ extern "C" {
 using namespace std;
 
 // Perform t-SNE
-void TSNE::run(double* X, int N, int D, double* Y, int no_dims, double perplexity, double theta, unsigned int seed) {
+void TSNE::run(double* X, int N, int D, double* Y, int no_dims, double perplexity, double theta, unsigned int seed, int max_iter) {
     // Initalize the pseudorandom number generator
     srand(seed);
     
@@ -37,7 +37,7 @@ void TSNE::run(double* X, int N, int D, double* Y, int no_dims, double perplexit
     // Set learning parameters
     float total_time = .0;
     clock_t start, end;
-	int max_iter = 1000, stop_lying_iter = 250, mom_switch_iter = 250;
+	int max_iter = max_iter, stop_lying_iter = 250, mom_switch_iter = 250;
 	double momentum = .5, final_momentum = .8;
 	double eta = 200.0;
     

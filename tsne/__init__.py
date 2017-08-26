@@ -6,11 +6,13 @@ import sys
 from bh_sne import BH_SNE
 
 def bh_sne(data, pca_d=None, d=2, perplexity=30., theta=0.5,
-           random_state=None, copy_data=False):
+           random_state=None, copy_data=False, max_iter=1000):
     """
     Run Barnes-Hut T-SNE on _data_.
 
     @param data         The data.
+
+    @param max_iter     Number of iterations to run
 
     @param pca_d        The dimensionality of data is reduced via PCA
                         to this dimensionality.
@@ -56,7 +58,7 @@ def bh_sne(data, pca_d=None, d=2, perplexity=30., theta=0.5,
         seed = random_state.randint(2**32-1)
 
     tsne = BH_SNE()
-    Y = tsne.run(X, N, X.shape[1], d, perplexity, theta, seed)
+    Y = tsne.run(X, N, X.shape[1], d, perplexity, theta, seed, max_iter)
     return Y
 
 from ._version import get_versions
