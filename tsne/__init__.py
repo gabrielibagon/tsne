@@ -58,7 +58,7 @@ def bh_sne(data, pca_d=None, d=2, perplexity=30., theta=0.5,
         seed = random_state.randint(2**32-1)
 
     tsne = BH_SNE()
-    Y = tsne.run(X, N, X.shape[1], d, perplexity, theta, seed, max_iter)
+    Y = tsne.run(X, max_iter, N, X.shape[1], d, perplexity, theta, seed)
     return Y
 
 from ._version import get_versions

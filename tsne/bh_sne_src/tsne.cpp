@@ -25,10 +25,10 @@ extern "C" {
 using namespace std;
 
 // Perform t-SNE
-void TSNE::run(double* X, int N, int D, double* Y, int no_dims, double perplexity, double theta, unsigned int seed, int max_iter) {
+void TSNE::run(double* X, int max_iter, int N, int D, double* Y, int no_dims, double perplexity, double theta, unsigned int seed) {
     // Initalize the pseudorandom number generator
     srand(seed);
-    
+
     // Determine whether we are using an exact algorithm
     if(N - 1 < 3 * perplexity) { printf("Perplexity too large for the number of data points!\n"); exit(1); }
     printf("Using no_dims = %d, perplexity = %f, theta = %f, seed=%d\n", no_dims, perplexity, theta, seed);
